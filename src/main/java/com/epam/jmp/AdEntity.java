@@ -1,8 +1,8 @@
 package com.epam.jmp;
 
-import jakarta.persistence.*;
 import lombok.*;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
@@ -19,6 +19,6 @@ public class AdEntity {
     private String name;
     @Column
     private Double price;
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "date")
     private Timestamp creationDate;
 }
