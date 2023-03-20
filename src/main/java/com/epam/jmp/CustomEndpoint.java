@@ -14,35 +14,35 @@ import java.util.concurrent.ConcurrentHashMap;
 @Endpoint(id = "custom")
 public class CustomEndpoint {
 
-    private Map<String, Feature> features = new ConcurrentHashMap<>();
+    private Map<String, Ad> statistics = new ConcurrentHashMap<>();
 
     @ReadOperation
-    public Map<String, Feature> features() {
-        return features;
+    public Map<String, Ad> ads() {
+        return statistics;
     }
 
     @ReadOperation
-    public Feature feature(@Selector String name) {
-        return features.get(name);
+    public Ad ad(@Selector String name) {
+        return statistics.get(name);
     }
 
     @WriteOperation
-    public void configureFeature(@Selector String name, Feature feature) {
-        features.put(name, feature);
+    public void configureAd(@Selector String name, Ad ad) {
+        statistics.put(name, ad);
     }
 
     @DeleteOperation
-    public void deleteFeature(@Selector String name) {
-        features.remove(name);
+    public void deleteAd(@Selector String name) {
+        statistics.remove(name);
     }
 
     @AllArgsConstructor
     @NoArgsConstructor
     @Setter
     @Getter
-    public static class Feature {
-        private Boolean enabled;
-
+    public static class Ad {
+        private String name;
+        private int count;
+        private int sold;
     }
-
 }

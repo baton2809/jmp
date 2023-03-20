@@ -17,9 +17,11 @@ public class AdRepositoryTest {
 
     @Test
     public void should_create_new_user() {
-        AdEntity user = new AdEntity("iphone 14 pro", 1300);
-        userRepository.save(user);
-        AdEntity userByName = userRepository.findOneByName("iphone 14 pro");
+        AdEntity ad = new AdEntity();
+        ad.setName("iphone");
+        ad.setPrice(100.0);
+        userRepository.save(ad);
+        AdEntity userByName = userRepository.findOneByName("iphone");
         assertThat(userByName).isNotNull();
     }
 
